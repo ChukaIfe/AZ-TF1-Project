@@ -1,0 +1,26 @@
+Unseal Key: LUh/hp3Urzn5TjexvFBVKqOYcIp66IS+Y+ZinBy22hw=
+Root Token: hvs.LHmCOCEiIDYL5Wwpe9kpbAOU
+
+------------------------------------------------------------
+
+Unseal Key: Z54QTybNjp91CENJcoHCZpSGaVr+23zRr+RGelNuvug=
+Root Token: hvs.F4WGm49A2x2CaL8ivODAadlP
+--------------------------
+#created vault role
+roles/azure-app
+
+#read azure role token
+$ vault read azure/creds/azure-app
+
+#read app token
+VAULT_TOKEN=$APPS_TOKEN vault read azure/creds/azure-app
+
+#list available generated token/keys
+vault list sys/leases/lookup/azure/creds/azure-app
+
+
+#Create a variable that stores the first lease ID.
+LEASE_ID=$(vault list -format=json sys/leases/lookup/azure/creds/azure-app | jq -r ".[0]")
+
+#extend the use of the generated Azure credentials, you can renew the lease by passing its lease I
+vault lease renew azure/creds/azure-app/$LEASE_ID
