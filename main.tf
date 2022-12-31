@@ -29,7 +29,7 @@ resource "azurerm_resource_group" "dev-rg" {
   location = var.location_name
 
   tags = {
-    Environment = dev
+    Environment = "Dev"
     Team        = "DevOps"
   }
 }
@@ -69,7 +69,7 @@ resource "azurerm_network_security_group" "devTF-SG" {
   }
 
   tags = {
-    Environment = dev
+    Environment = "Dev"
   }
 }
 
@@ -87,7 +87,7 @@ resource "azurerm_public_ip" "devTF-ip" {
   allocation_method   = "Dynamic"
 
   tags = {
-    Environment = dev
+    Environment = "Dev"
   }
 }
 
@@ -105,7 +105,7 @@ resource "azurerm_network_interface" "devTF-nic" {
   }
 
   tags = {
-    "Environment" = dev
+    "Environment" = "Dev"
   }
 }
 
@@ -148,7 +148,7 @@ resource "azurerm_linux_virtual_machine" "devTF-VM" {
   }*/
 
   tags = {
-    "Environment" = dev
+    "Environment" = "Dev"
   }
 }
 
