@@ -156,7 +156,7 @@ data "azurerm_public_ip" "devTF-ip-data" {
   name                = azurerm_public_ip.devTF-ip.name
   resource_group_name = var.resource_group_name
 }
-
+#creates output
 output "public_ip_address" {
   value = "${azurerm_linux_virtual_machine.devTF-VM.name}:${data.azurerm_public_ip.devTF-ip-data.ip_address}"
 
