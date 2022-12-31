@@ -152,6 +152,7 @@ resource "azurerm_linux_virtual_machine" "devTF-VM" {
   }
 }
 
+#data source pub ip
 data "azurerm_public_ip" "devTF-ip-data" {
   name                = azurerm_public_ip.devTF-ip.name
   resource_group_name = var.resource_group_name
